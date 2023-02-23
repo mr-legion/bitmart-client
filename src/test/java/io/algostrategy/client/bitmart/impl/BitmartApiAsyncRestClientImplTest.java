@@ -6,6 +6,7 @@ import io.algostrategy.client.bitmart.domain.Response;
 import io.algostrategy.client.bitmart.domain.general.AssetResponse;
 import io.algostrategy.client.bitmart.domain.market.MarketInfoResponse;
 import io.algostrategy.client.bitmart.domain.market.MarketTickerResponse;
+import io.algostrategy.client.bitmart.domain.market.OrderBook;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.ExecutionException;
@@ -40,5 +41,14 @@ public class BitmartApiAsyncRestClientImplTest {
         assertNotNull(response);
         assertNotNull(response.getData());
         assertThat(response.getData().getTickers(), is(not(empty())));
+    }
+
+    @Test
+    public void getOrderBook_ShouldReturnOrderBookForBTCUSDT() throws ExecutionException, InterruptedException {
+        Response<OrderBook> response = bitmartApiAsyncRestClient.getOrderBook("BTC_USDT", 10, null).get();
+        assertNotNull(response);
+        assertNotNull(response.getData());
+        assertThat(response.getData().getAsks(), is(not(empty())));
+        assertThat(response.getData().getBids(), is(not(empty())));
     }
 }

@@ -5,6 +5,7 @@ import io.algostrategy.client.bitmart.domain.Response;
 import io.algostrategy.client.bitmart.domain.general.AssetResponse;
 import io.algostrategy.client.bitmart.domain.market.MarketInfoResponse;
 import io.algostrategy.client.bitmart.domain.market.MarketTickerResponse;
+import io.algostrategy.client.bitmart.domain.market.OrderBook;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -41,6 +42,13 @@ public class BitmartApiAsyncRestClientImpl implements BitmartApiAsyncRestClient 
     public CompletableFuture<Response<MarketTickerResponse>> getMarketTickers() {
         CompletableFuture<Response<MarketTickerResponse>> future = new CompletableFuture<>();
         bitmartApiService.getMarketTickers().enqueue(new RetrofitCallbackAdapter<>(future));
+        return future;
+    }
+
+    @Override
+    public CompletableFuture<Response<OrderBook>> getOrderBook(String market, Integer limit, Integer precision) {
+        CompletableFuture<Response<OrderBook>> future = new CompletableFuture<>();
+        bitmartApiService.getOrderBook(market, limit, precision).enqueue(new RetrofitCallbackAdapter<>(future));
         return future;
     }
 }
