@@ -1,10 +1,8 @@
 package io.algostrategy.client.bitmart;
 
 import io.algostrategy.client.bitmart.domain.Response;
-import io.algostrategy.client.bitmart.domain.general.Asset;
 import io.algostrategy.client.bitmart.domain.general.AssetResponse;
-
-import java.util.List;
+import io.algostrategy.client.bitmart.domain.market.MarketInfoResponse;
 
 /**
  * Bitmart API facade, supporting synchronous/blocking access Binance's REST API.
@@ -20,4 +18,12 @@ public interface BitmartApiRestClient {
      */
     Response<AssetResponse> getAssets();
 
+    // Market endpoints
+
+    /**
+     * Get all supported markets.
+     *
+     * @return market info
+     */
+    Response<MarketInfoResponse> getMarketInfo();
 }

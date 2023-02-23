@@ -1,10 +1,9 @@
 package io.algostrategy.client.bitmart;
 
 import io.algostrategy.client.bitmart.domain.Response;
-import io.algostrategy.client.bitmart.domain.general.Asset;
 import io.algostrategy.client.bitmart.domain.general.AssetResponse;
+import io.algostrategy.client.bitmart.domain.market.MarketInfoResponse;
 
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 /**
@@ -21,4 +20,12 @@ public interface BitmartApiAsyncRestClient {
      */
     CompletableFuture<Response<AssetResponse>> getAssets();
 
+    // Market endpoints
+
+    /**
+     * Get all supported markets (asynchronous).
+     *
+     * @return market info
+     */
+    CompletableFuture<Response<MarketInfoResponse>> getMarketInfo();
 }
