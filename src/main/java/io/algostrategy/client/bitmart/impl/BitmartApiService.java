@@ -14,7 +14,7 @@ public interface BitmartApiService {
 
     // General endpoints
 
-    @GET("/spot/v1/currencies")
+    @GET("/account/v1/currencies")
     Call<Response<AssetResponse>> getAssets();
 
     // Market endpoints
