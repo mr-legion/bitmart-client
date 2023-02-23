@@ -4,6 +4,7 @@ import io.algostrategy.client.bitmart.BitmartApiRestClient;
 import io.algostrategy.client.bitmart.domain.Response;
 import io.algostrategy.client.bitmart.domain.general.AssetResponse;
 import io.algostrategy.client.bitmart.domain.market.MarketInfoResponse;
+import io.algostrategy.client.bitmart.domain.market.MarketTickerResponse;
 
 /**
  * Implementation of Binance's REST API using Retrofit with synchronous/blocking method calls.
@@ -28,5 +29,10 @@ public class BitmartApiRestClientImpl implements BitmartApiRestClient {
     @Override
     public Response<MarketInfoResponse> getMarketInfo() {
         return BitmartApiServiceGenerator.executeSync(bitmartApiService.getMarketInfo());
+    }
+
+    @Override
+    public Response<MarketTickerResponse> getMarketTickers() {
+        return BitmartApiServiceGenerator.executeSync(bitmartApiService.getMarketTickers());
     }
 }

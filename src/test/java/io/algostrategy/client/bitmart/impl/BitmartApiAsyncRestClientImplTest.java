@@ -5,6 +5,7 @@ import io.algostrategy.client.bitmart.BitmartApiClientFactory;
 import io.algostrategy.client.bitmart.domain.Response;
 import io.algostrategy.client.bitmart.domain.general.AssetResponse;
 import io.algostrategy.client.bitmart.domain.market.MarketInfoResponse;
+import io.algostrategy.client.bitmart.domain.market.MarketTickerResponse;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.ExecutionException;
@@ -31,5 +32,13 @@ public class BitmartApiAsyncRestClientImplTest {
         assertNotNull(response);
         assertNotNull(response.getData());
         assertThat(response.getData().getMarkets(), is(not(empty())));
+    }
+
+    @Test
+    public void getMarketTickers_ShouldReturnMarketTickers() throws ExecutionException, InterruptedException {
+        Response<MarketTickerResponse> response = bitmartApiAsyncRestClient.getMarketTickers().get();
+        assertNotNull(response);
+        assertNotNull(response.getData());
+        assertThat(response.getData().getTickers(), is(not(empty())));
     }
 }

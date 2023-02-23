@@ -3,6 +3,7 @@ package io.algostrategy.client.bitmart;
 import io.algostrategy.client.bitmart.domain.Response;
 import io.algostrategy.client.bitmart.domain.general.AssetResponse;
 import io.algostrategy.client.bitmart.domain.market.MarketInfoResponse;
+import io.algostrategy.client.bitmart.domain.market.MarketTickerResponse;
 
 /**
  * Bitmart API facade, supporting synchronous/blocking access Binance's REST API.
@@ -26,4 +27,11 @@ public interface BitmartApiRestClient {
      * @return market info
      */
     Response<MarketInfoResponse> getMarketInfo();
+
+    /**
+     * Get market ticker information.
+     *
+     * @return market tickers
+     */
+    Response<MarketTickerResponse> getMarketTickers();
 }

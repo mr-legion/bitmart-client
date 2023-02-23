@@ -5,6 +5,7 @@ import io.algostrategy.client.bitmart.BitmartApiRestClient;
 import io.algostrategy.client.bitmart.domain.Response;
 import io.algostrategy.client.bitmart.domain.general.AssetResponse;
 import io.algostrategy.client.bitmart.domain.market.MarketInfoResponse;
+import io.algostrategy.client.bitmart.domain.market.MarketTickerResponse;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -29,5 +30,13 @@ public class BitmartApiRestClientImplTest {
         assertNotNull(response);
         assertNotNull(response.getData());
         assertThat(response.getData().getMarkets(), is(not(empty())));
+    }
+
+    @Test
+    public void getMarketTickers_ShouldReturnMarketTickers() {
+        Response<MarketTickerResponse> response = bitmartApiRestClient.getMarketTickers();
+        assertNotNull(response);
+        assertNotNull(response.getData());
+        assertThat(response.getData().getTickers(), is(not(empty())));
     }
 }
