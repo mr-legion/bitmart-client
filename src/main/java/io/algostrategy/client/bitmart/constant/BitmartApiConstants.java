@@ -14,6 +14,11 @@ public class BitmartApiConstants {
     public static final String BASE_DOMAIN = "bitmart.com";
 
     /**
+     * REST base URL.
+     */
+    public static final String BASE_URL = "https://www." + BASE_DOMAIN;
+
+    /**
      * REST API base URL.
      */
     public static final String API_BASE_URL = "https://api-cloud." + BASE_DOMAIN;
